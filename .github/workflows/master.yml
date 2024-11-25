@@ -17,4 +17,4 @@ jobs:
         server: www.symptosync.org
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /ojm_deploy/
+        server-dir: /home/sympnhxi/new/
