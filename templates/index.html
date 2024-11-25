@@ -52,7 +52,7 @@
                     <div class="d-flex flex-wrap">
                         {% if request.user.is_authenticated %}
 
-                        <a href="{% url 'userauth:glucose_log' %}" class="text-light me-4"><i class="fas fa-user-plus text-primary me-2"></i>Welcome {{request.user.username}}</a>
+                        <a href="{% url 'userauth:glucose_log' %}" class="text-light me-4"><i class="fas fa-user-plus text-primary me-2"></i>Welcome {{request.user.username|title}}</a>
                         {% else %}
                         <a href="{% url 'userauth:signup' %}" class="text-light me-4"><i class="fas fa-user-plus text-primary me-2"></i>Join the community</a>
                         {% endif %}
