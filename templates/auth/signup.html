@@ -1,0 +1,16 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter your username" required>
+    {{ form.username.errors }}
+    
+    <input type="email" name="email" placeholder="Enter your email address" required>
+    {{ form.email.errors }}
+
+    <input type="password" name="password1" placeholder="Enter your password" required>
+    {{ form.password1.errors }}
+
+    <input type="password" name="password2" placeholder="Confirm your password" required>
+    {{ form.password2.errors }}
+
+    <button type="submit">Sign Up</button>
+</form>

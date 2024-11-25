@@ -1,0 +1,16 @@
+<h1>{{ group.name }}</h1>
+<p>{{ group.description }}</p>
+
+<h2>Posts:</h2>
+<ul>
+  {% for post in posts %}
+    <li>{{ post.author.user.username }}: {{ post.content }}</li>
+  {% endfor %}
+</ul>
+
+<h3>Write a post:</h3>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Post</button>
+</form>
