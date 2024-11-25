@@ -50,11 +50,11 @@
             <div class="row gx-0 align-items-center" style="height: 45px;">
                 <div class="col-lg-8 text-center text-lg-start mb-lg-0">
                     <div class="d-flex flex-wrap">
-                        {% if user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
 
                         <a href="{% url 'userauth:signup' %}" class="text-light me-4"><i class="fas fa-user-plus text-primary me-2"></i>Join the community</a>
                         {% else %}
-                        <a href="{% url 'userauth:glucose_log' %}" class="text-light me-4"><i class="fas fa-user-plus text-primary me-2"></i>Welcome {{user.username}}</a>
+                        <a href="{% url 'userauth:glucose_log' %}" class="text-light me-4"><i class="fas fa-user-plus text-primary me-2"></i>Welcome {{request.user.username}}</a>
                         {% endif %}
 
                         <a href="#" class="text-light me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
@@ -101,7 +101,7 @@
                         </div>
                         <a href="#contact-us" class="nav-item nav-link">Contact Us</a>
                     </div>
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
 
                     <a href="{% url 'userauth:signup' %}" class="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0">Sign Up</a>
                     {% else %}
@@ -121,7 +121,7 @@
                             <h1 class="display-1 text-capitalize text-white mb-4">Empowering Women's Health Journey Together</h1>
                             <p class="mb-5 fs-5">Over 5 million women ages 13-49 have PCOS, facing higher Type 2 Diabetes and Heart Disease risks. Personalized support is hard to find, leaving many without proper care.
                             </p>
-                            {% if user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
 
                             <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'userauth:signup' %}">Sign Up</a>
                             {% else %}
@@ -138,7 +138,7 @@
                             <h1 class="display-1 text-capitalize text-white mb-4">Where PCOS meets community</h1>
                             <p class="mb-5 fs-5 animated slideInDown">With over 5 million women between ages 13-49 battling PCOS and its associated risks of Type 2 Diabetes and Heart Disease, personalized care remains elusive.
                             </p>
-                            {% if user.is_authenticated %}
+                            {% if request.user.is_authenticated %}
 
                             <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{% url 'userauth:signup' %}">Sign Up</a>
                             {% else %}
