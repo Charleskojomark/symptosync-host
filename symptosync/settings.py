@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'userauth',
     'community',
     'core',
+    'period_tracker',
 ]
 
 MIDDLEWARE = [

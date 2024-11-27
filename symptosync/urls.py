@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('userauth.urls')),
     path('community/', include('community.urls')),
     path('', include('core.urls')),
+    path('period-tracker/', include('period_tracker.urls')),
 ]

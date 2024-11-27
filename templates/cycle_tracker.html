@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Period Tracker{% endblock %}
+
+{% block body %}
+<h1 class="my-4">Period Tracker</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="previous_date" class="form-label">What day did your most recent period start?</label>
+        <input type="date" name="previous_date" id="previous_date" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="cycle_length" class="form-label">Number of days in your cycle:</label>
+        <input type="text" name="cycle_length" id="cycle_length" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Cycle Dates</button>
+</form>
+
+{% if cycle %}
+<div class="mt-4">
+    <h2>Cycle Predictions</h2>
+    <ul>
+        <li>Next Occurrence: {{ cycle.next_occurrence }}</li>
+        <li>Next 12 Occurrences:
+            <ul>
+                {% for occurrence in cycle.next_12_occurrences %}
+                <li>{{ occurrence }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Flow Date: {{ cycle.flow_date }}</li>
+        <li>Predicted Ovulation Day: {{ cycle.ovulation_date }}</li>
+        <li>Safe Periods:
+            <ul>
+                {% for period in cycle.safe_periods %}
+                <li>{{ period.0 }} - {{ period.1 }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Fertile Periods:
+            <ul>
+                {% for period in cycle.fertile_periods %}
+                <li>{{ period.0 }} - {{ period.1 }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
