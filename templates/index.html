@@ -93,7 +93,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{% url 'userauth:glucose_log' %}" class="dropdown-item">AI Diabetes Manager</a>
-                                <a href="{% url 'userauth:glucose_log' %}" class="dropdown-item">Period Tracker</a>
+                                <a href="{% url '{% url 'period_tracker:cycle' %}" class="dropdown-item">Period Tracker</a>
                                 <a href="{% url 'userauth:glucose_log' %}" class="dropdown-item">The Community</a>
                                 <!-- <a href="blog.html" class="dropdown-item">Our Blog</a> -->
                                 <!-- <a href="team.html" class="dropdown-item">Our Team</a> -->
@@ -188,7 +188,7 @@
                                 <div class="service-content-inner">
                                     <h5 class="mb-4">Period Tracker</h5>
                                     <p class="mb-4">Monitors Your cycles and symptoms.Journaling your journey. Pills log and reminders</p>
-                                    <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Learn More</a>
+                                    <a href="{% url 'period_tracker:cycle' %}" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -718,8 +718,8 @@
                         <div class="footer-item d-flex flex-column">
                             <h4 class="mb-4 text-white">SymptoSync Services</h4>
                             <a href=""><i class="fas fa-angle-right me-2"></i> All Services</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> AI Diabetes Manager</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Period Tracker</a>
+                            <a href="{% url 'userauth:glucose_log' %}"><i class="fas fa-angle-right me-2"></i> AI Diabetes Manager</a>
+                            <a href="{% url 'period_tracker:cycle' %}"><i class="fas fa-angle-right me-2"></i> Period Tracker</a>
                             <a href=""><i class="fas fa-angle-right me-2"></i> The Community</a>
                         </div>
                     </div>
