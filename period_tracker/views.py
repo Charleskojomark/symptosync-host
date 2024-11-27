@@ -2,11 +2,12 @@ from django.shortcuts import render
 from datetime import datetime, timedelta
 from django.views import View
 from .models import Cycle
-
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@method_decorator(login_required, name='dispatch')
 class CycleDatesView(View):
     def get(self, request):
         return render(request, 'cycle_tracker.html')
