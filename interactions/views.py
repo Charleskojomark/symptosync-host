@@ -47,7 +47,7 @@ def like(request, post_id):
     post.save()
     messages.success(request, "Post liked successfully")
 
-    return redirect("home")
+    return redirect("interactions:home")
 
 
 @login_required
@@ -56,7 +56,7 @@ def unlike(request, post_id):
     post.liked_by.remove(request.user)
     post.save()
 
-    return redirect("home")
+    return redirect("interactions:home")
 
 
 @login_required
@@ -65,7 +65,7 @@ def unsave(request, post_id):
 
     post.saved_by.remove(request.user)
     post.save()
-    return redirect("saves")
+    return redirect("interactions:saves")
 
 
 @login_required
@@ -75,7 +75,7 @@ def save(request, post_id):
     post.saved_by.add(request.user)
     post.save()
     messages.success(request, "Post saved successfully")
-    return redirect("saves")
+    return redirect("interactions:saves")
 
 
 @login_required
@@ -109,7 +109,7 @@ def edit(request, post_id):
         post.save()
         messages.success(request, "Post edited successfully")
 
-        return redirect("my_profile")
+        return redirect("userauth:my_profile")
 
     return render(request, "edit.html", {"post": post})
 
@@ -120,7 +120,7 @@ def delete(request, post_id):
     post.delete()
     messages.success(request, "Post deleted successfully")
 
-    return redirect("my_profile")
+    return redirect("userauth:my_profile")
 
 
 @login_required
