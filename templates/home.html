@@ -82,7 +82,7 @@
             <div class="interactions">
                 <div class="like">
                     {% if user in post.liked_by.all %}
-                    <form method="post" action="{% url 'unlike' post.pk %}">
+                    <form method="post" action="{% url 'interactions:unlike' post.pk %}">
                         {% csrf_token %}
                         <button type="submit" class="action-btn like-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
