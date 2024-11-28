@@ -1,0 +1,245 @@
+/* .container {
+    width: 40%;
+    height: 500px;
+    margin: 150px auto;
+    background-color: #d63384;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    perspective: 1000px;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    transform: rotateX(25deg);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    animation: formScale 0.5s ease-in-out;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="submit"] {
+    width: 75px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #4a4a4a;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease-in-out;
+    height: 100px;
+    max-height: 200px;
+    background-color: black;
+    color: white;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.text-muted {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
+
+@keyframes formScale {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.delete[type="submit"] {
+    width: 75px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    transform: rotateY(25deg);
+}
+
+.delete[type="submit"]:hover {
+    background-color: #bb0000;
+} */
+
+
+/* General Reset */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border-top: 5px solid #d63384;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #d63384;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+  
+  /* Form Styles */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  textarea,
+  input[type="submit"],
+  input[type="file"] {
+    font-size: 1rem;
+  }
+  
+  textarea {
+    resize: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  textarea:focus {
+    border-color: #d63384;
+  }
+  
+  .custom-file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #d63384;
+    background-color: #f5f5f5;
+    padding: 10px 15px;
+    border: 2px dashed #d63384;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .custom-file-upload:hover {
+    background-color: #ffe6f1;
+    border-color: #c51f66;
+  }
+  
+  #fileName {
+    font-weight: bold;
+  }
+  
+  input[type="submit"] {
+    background-color: #d63384;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #c51f66;
+  }
+  
+  input[type="submit"]:focus {
+    outline: 2px solid #c51f66;
+  }
+  
+  /* Delete Button */
+  input.delete {
+    background-color: #ff4d4f;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input.delete:hover {
+    background-color: #d9363e;
+  }
+  
+  input.delete:focus {
+    outline: 2px solid #d9363e;
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      margin: 20px;
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  

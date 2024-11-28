@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm
 from .models import UserProfile
@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from core.models import Glucose
+from interactions.models import Post
 
 
 def login_view(request):
@@ -101,3 +102,38 @@ def home_view(request):
         context['username'] = request.user.username
         context['email'] = request.user.email
     return render(request, 'auth/home.html', context)
+
+
+def profile_detail(request, profile_id):
+    profile = get_object_or_404(UserProfile, id=profile_id)
+    posts = Post.objects.filter(author=profile.user)
+    like_count = sum(post.liked_by.count() for post in posts)
+    like_count = format_count(like_count)
+    return render(
+        request,
+        "profile.html",
+        {
+            "profile": profile,
+            "posts": posts,
+            "like_count": like_count,
+        },
+    )
+
+
+def format_count(count):
+    if count > 999:
+        return f"{count // 1000}.{count // 100 % 10}k"
+    return str(count)
+
+
+@login_required
+def my_profile(request):
+    profile = UserProfile.objects.get(user=request.user)
+    posts = Post.objects.filter(author=request.user)
+    like_count = sum(post.liked_by.count() for post in posts)
+
+    return render(
+        request,
+        "my_profile.html",
+        {"profile": profile, "posts": posts, "like_count": like_count},
+    )
