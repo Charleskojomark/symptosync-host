@@ -94,7 +94,7 @@
                             <div class="dropdown-menu m-0">
                                 <a href="{% url 'userauth:glucose_log' %}" class="dropdown-item">AI Diabetes Manager</a>
                                 <a href="{% url 'period_tracker:cycle' %}" class="dropdown-item">Period Tracker</a>
-                                <a href="{% url 'userauth:glucose_log' %}" class="dropdown-item">The Community</a>
+                                <a href="{% url 'interactions:home' %}" class="dropdown-item">The Community</a>
                                 <!-- <a href="blog.html" class="dropdown-item">Our Blog</a> -->
                                 <!-- <a href="team.html" class="dropdown-item">Our Team</a> -->
                             </div>
@@ -202,7 +202,7 @@
                                 <div class="service-content-inner">
                                     <h5 class="mb-4">The Community</h5>
                                     <p class="mb-4">Integrated Community Support. Access to different groups within the community.</p>
-                                    <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Coming Soon</a>
+                                    <a href="{% url 'interactions:home' %}" class="btn btn-primary rounded-pill text-white py-2 px-4 mb-2">Coming Soon</a>
                                 </div>
                             </div>
                         </div>
@@ -720,7 +720,7 @@
                             <a href=""><i class="fas fa-angle-right me-2"></i> All Services</a>
                             <a href="{% url 'userauth:glucose_log' %}"><i class="fas fa-angle-right me-2"></i> AI Diabetes Manager</a>
                             <a href="{% url 'period_tracker:cycle' %}"><i class="fas fa-angle-right me-2"></i> Period Tracker</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> The Community</a>
+                            <a href="{% url 'interactions:home' %}"><i class="fas fa-angle-right me-2"></i> The Community</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
