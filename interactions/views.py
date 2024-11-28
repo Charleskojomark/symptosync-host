@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-
+@login_required
 def home(request):
     posts = Post.objects.all()
     context = {"posts": posts}
