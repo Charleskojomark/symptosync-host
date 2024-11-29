@@ -10,6 +10,7 @@
     {% block link %}
     <link rel="stylesheet" href="{% static 'css/post.css' %}" />
     <link rel="stylesheet" href="{% static 'css/comments.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
     <script src="{% static 'js/comments.js' %}"></script>
     <script src="{% static 'js/post.js' %}"></script>
 
@@ -24,7 +25,27 @@
     <br>
     <br>
     <br>
-    <h1 style="text-align: center;">Community</h1>
+    {% if not user_profile.first_name or not user_profile.profile_img %}
+<div class="update">
+    <div class="update-container">
+        <h1>Update Profile</h1>
+        
+        <form method="POST" enctype="multipart/form-data" action="{% url 'userauth:update_profile' %}">
+            {% csrf_token %}
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="{{ user_profile.first_name }}">
+            
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="{{ profile.last_name }}">
+            
+            <label for="profile_img">Profile Image:</label>
+            <input type="file" id="profile_img" name="profile_img">
+            
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+</div>
+{% else %}
     <div class="followers-container">
         <div class="carousel">
             {% for profile in profiles %}
@@ -58,20 +79,38 @@
         <div class="blog-content">
             {% if post.author != user %}
             <div class="author-info">
-                <a href="{% url 'userauth:profile_detail' post.author.profile.pk %}">
-                    <img src="{{ post.author.profile.profile_img.url }}" alt="Author Avatar" class="author-avatar">
+                <a href="{% if post.author == user %}{% url 'userauth:my_profile' %}{% else %}{% url 'userauth:profile_detail' post.author.pk %}{% endif %}">
+                    {% if post.author.profile.profile_img.url %}
+                    <img src="{{ post.author.profile.profile_img.url }}" 
+                         alt="Author Avatar" 
+                         style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #d63384;">
+                    {% else %}
+                    <img src="{% static 'img/default.jpg' %}" 
+                         alt="profile" 
+                         style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
+                    {% endif %}
                 </a>
-                <a href="{% url 'userauth:profile_detail' post.author.profile.pk %}">
-                    <p>{{ post.author }}</p>
+                
+                <a href="{% url 'userauth:my_profile' %}">
+                    <p style="color: black;">{{ post.author }}</p>
                 </a>
             </div>
             {% else %}
             <div class="author-info">
                 <a href="{% url 'userauth:my_profile' %}">
-                    <img src="{{ post.author.profile.profile_img.url }}" alt="Author Avatar" class="author-avatar">
+                    {% if post.author.profile.profile_img.url %}
+                    <img src="{{ post.author.profile.profile_img.url }}" 
+                         alt="Author Avatar" 
+                         style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #d63384;">
+                    {% else %}
+                    <img src="{% static 'img/default.jpg' %}" 
+                         alt="profile" 
+                         style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
+                    {% endif %}
                 </a>
+                
                 <a href="{% url 'userauth:my_profile' %}">
-                    <p>{{ post.author }}</p>
+                    <p style="color: black;">{{ post.author }}</p>
                 </a>
             </div>
             {% endif %}
@@ -147,6 +186,7 @@
         </div>
     </div>
     {% endfor %}
+    {% endif %}
     {% endblock content %}
 </body>
 

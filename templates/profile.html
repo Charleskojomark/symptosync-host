@@ -90,10 +90,10 @@
         <div class="blog-content">
             {% if post.author != user %}
             <div class="author-info">
-                <a href="{% url 'userauth:profile_detail' post.author.profile.pk %}">
+                <a href="{% url 'userauth:profile_detail' post.author.pk %}">
                     <img src="{{ post.author.profile.profile_img.url }}" alt="Author Avatar" class="author-avatar">
                 </a>
-                <a href="{% url 'userauth:profile_detail' post.author.profile.pk %}">
+                <a href="{% url 'userauth:profile_detail' post.author.pk %}">
                     <p>{{ post.author }}</p>
                 </a>
             </div>

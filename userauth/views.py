@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from core.models import Glucose
 from interactions.models import Post
-
+from userauth.models import UserProfile
+from django.contrib import messages
 
 def login_view(request):
     if request.method == 'POST':
@@ -137,3 +138,27 @@ def my_profile(request):
         "my_profile.html",
         {"profile": profile, "posts": posts, "like_count": like_count},
     )
+
+@login_required
+def update_profile(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    
+    if request.method == "POST":
+        # Get data from form submission
+        first_name = request.POST.get("first_name", "").strip()
+        last_name = request.POST.get("last_name", "").strip()
+        profile_img = request.FILES.get("profile_img")  
+        
+        # Update profile fields
+        if first_name:
+            user_profile.first_name = first_name
+        if last_name:
+            user_profile.last_name = last_name
+        if profile_img:
+            user_profile.profile_img = profile_img
+        
+        user_profile.save()
+        messages.success(request, "Profile updated successfully!")
+        return redirect("interactions:home")  
+    
+    return render(request, "home.html", {"profile": user_profile})

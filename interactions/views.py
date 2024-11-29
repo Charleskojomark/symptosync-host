@@ -15,7 +15,11 @@ def home(request):
     if request.user.is_authenticated:
         user_profile = UserProfile.objects.get(user=request.user)
         profiles = user_profile.follows.all()
-        context["profiles"] = profiles
+        context = {
+        "posts": posts,
+        "user_profile": user_profile,
+        "profiles": profiles,
+    }
     return render(request, "home.html", context)
 
 
